@@ -13,7 +13,7 @@ class Order(models.Model):
     paid = models.BooleanField(default=False)
     # image = models.ImageField(upload_to='products/%Y/%m/%d', blank=True)
     
-    class Meta:
+    class Meta: 
         ordering = ('-created',)
 
     def __str__(self):
@@ -27,7 +27,6 @@ class OrderItem(models.Model):
     product = models.ForeignKey(Product, related_name='order_items', on_delete=models.CASCADE)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     quantity = models.PositiveIntegerField(default=1)
-    # totalPrice = models.DecimalField(max_digits=10, decimal_places=2)
 
     def __str__(self):
         return '{}'.format(self.id)

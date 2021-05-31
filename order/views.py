@@ -11,7 +11,7 @@ def order_create(request):
             order = form.save()
             for item in cart:
                 OrderItem.objects.create(order=order, product=item['product'],
-                                         price=item['price'], quantity=item['quantity'])
+                                         price=item['price'], quantity=item['quantity'], totalPrice=item['get_total_price'])
             # clear the cart
             cart.clear()
             return render(request, 'order/created.html', {'order': order})
